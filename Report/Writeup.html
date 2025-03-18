@@ -1,0 +1,267 @@
+<html>
+    <title>Write Up</title>
+    <body>
+    <h1>Investigation</h1>
+    <h2>Original Idea:</h2>
+    <p>From Brief, <br>
+        “Governments use data to spend money wisely and solve problems, which helps the
+        economy and society grow” <br>
+        My Initial idea to fulfill the request of the brief was to do an analysis of Housing Prices, I<br>
+        figured there would be many datasets on the topic as it is a well-known issue of today, and I <br>
+        was interested in investigating where the problems in the housing sector are arising. <br>  
+        However, the datasets which I came across didn't have the relevant information I was <br>
+        looking for and/or had outdated data, and therefore could not give accurate predictions to
+        the user.<br>
+    </p>
+    <h2>Second Idea:</h2>
+    <p>From Brief, <br>
+        “Governments use data to spend money wisely and solve problems, which helps the
+        economy and society grow” <br>
+        Alongside datasets Housing Prices, datasets of unemployment and homelessness were also <br>
+        prevalent, after deciding my original idea was impractical,I investigated these two topics also. <br>
+        However, there was a consistent lack of reliable datasets, these problems are well known <br>
+        but complex issues and the data collected within the datasets did not contain consistently <br>
+        updated data or contained large portions of missing data, and therefore I decided they were <br>
+        not ideal for a decent analysis true to the brief.
+    </p>    
+    <h3>Final Idea:</h3>
+    <p>From Brief, <br>
+        “Data is vitally important today because it helps people make smart decisions and come up <br>
+        with new ideas” <br>
+        While searching for datasets to do my project on I found a dataset containing information on <br>
+        Pokémon Generation 1 - 6, Pokémon contains a large number of different ways to approach <br>
+        the game depending on the team build you wish to make to beat the game, and each <br>
+        generation containing a different prominent theme and type advantage would make for an
+        excellent dataset to use for predictions. <br>
+        The Dataset had all of the relevant information I would need i.e. Information on each <br>
+        Pokémon's stats, their types, their Pokedex number and generation, it is also relevant today <br>
+        as Pokémon games still to this day have games based on generations 1-6 coming out annually. <br>
+        Therefore, I chose this dataset to use in my project.
+    </p>
+
+    <h1>Plan and Design</h1>
+    <p>I selected this dataset on Pokemon as Pokemon is a franchise I have loved my entire life <br>
+        and I consider my knowledge on the Game to be quite sufficient to effectively <br>
+        make an interactive information system on it. <br> 
+        As Pokemon is a globally known and enjoyed franchise the target audience is as great as <br>
+        could be (Target age range: Teenagers & Adult fans of Pokemon as they are most likely to be looking for an information system like this), <br>
+        both kids and adults alike  play pokemon and can benefit from the information <br>
+        on my website, my goal <b>SOCIALLY</b> for the project is to make a comprehensive, educational information system <br>
+        that informs Pokemon players of hidden factors in games in the hopes of making every user who looks at my website <br>
+        just a little bit better at Pokemon.
+        I'm taking an AGILE approach to the project so that it has concrete functionality, <br>
+        I will be approaching the project from the bottom up in phases to deliver an effective information system<br>
+        My website will help the target audience by visualizing key factors in Pokemon games that <br>
+         would otherwise not be known without studying the games internal data in a simple <br>
+        understandable way that even a Child would be able to understand, by extracting data from <br>
+        the downloaded csv file into comprehensible dictionaries.
+        </p>
+    <h3>Meeting the Requirements</h3>
+    <h4>Basic</h4>
+    <p>1. <br>
+        I selected a publicly available dataset from Kaggle.com <br>
+        I used Pandas in python in order to clean the dataset I selected and stored the clean <br>
+        data in a new csv file to then be used in extraction <br>
+        I extracted the data from the clean csv file to be used in graphing. <br>
+        2. <br>
+        Using Matplotlib in python I graphed two distinct different visualisations <br>
+        representing different aspects of the dataset. (Pie Chart & Bar Chart) <br>
+        I labelled the legend, axis labels, and gave titles to all of my charts <br>
+        I turned the extracted data into dictionaries to send the data to Firebase. <br>
+        3. <br>
+        I used javascript to get the information I sent to firebase to be used in graphing with <br>
+        Chart.js (and displayed the data visualisations I originally created using matplotlib) on html.
+        </p>
+    <h4>Advanced</h4>
+    <p>1.<br>
+        The Bar Chart and Doughnut charts i created display their key and value while<br>
+         hovering over different keys, the types in the type frequency charts are all directly <br>
+         colour coded to their in game colours and you can control the range of types u see in <br>
+        the doughnut charts by clicking on the Types in the Legend <br>
+        2.<br>
+        I created a Survey that takes in user information on whether or not / how they play <br>
+         pokemon games and displayed that data visually <br>
+        3. <br>
+        I created a Suggestions area separated from the rest of the graphs on my Index.html <br>
+        that provides information on what the data visualized means and how it can be used in game. </p>
+    <h2>Flowcharts of How The Data was Cleaned</h2>
+    <h4>Cleaning Downloaded Dataset</h4>
+    <img src="Cleaning Dataset.png">
+    <h3>Flowcharts of How The Graphical Data was Extracted</h3>
+    <h4>Extracting Total Type Frequency and Average Stats</h4>
+    <img src="TotalType1.png">
+    <img src="TotalType2.png">
+    <h4>Extracting Type Frequency Per Generation</h4>
+    <img src="TypeGen1.png">
+
+
+    <h1>Create</h1>
+    <h2>December</h2>
+    <h3>Week 1 (2nd - 6th)</h3>
+    <p style="max-width: 50%;">Researched Publicly Available Datasets to use, did this via; <br>
+        - <a href="https://www.kaggle.com/datasets">kaggle.com</a> <br>
+        - <a href="https://data.gov.ie/dataset?theme=Housing">gov.ie/Housing</a> <br>
+        Researched examples of interactive information systems: <br>
+        - <a href="-https://data.gov.ie/showcase">data.gov/showcase</a> 
+        - <a href="https://storymaps.arcgis.com/stories/87cc342bff20462bb896087b0ce16215">storymaps.arcgis.com</a> <br>
+        - <a href="https://public.tableau.com/app/profile/arup.ireland/viz/CommutingInIreland2006-2016/CommutinginIreland">public.tableau.com</a> 
+	This information system used bar charts and doughnut charts that I liked so I decided to find a way to implement these into my interactive information system. 
+    </p>
+    <h3>Week 2 (9th - 13th)</h3>
+    <p style="max-width: 50%;">
+        Identified Which Dataset I would use: <br>  
+	- <a href="https://www.kaggle.com/datasets/abcsds/pokemon">kaggle.com/pokemon</a> <br>
+Identified what would need to be done to the file in order to use in analytics: <br>
+-	Fill Blank Cells  <br>
+-	Rename Columns for easier Analysis <br>
+Drew up Pie Chart and Bar Chart concepts
+Came up with suggestions I can give to the user with the information in the dataset
+Created flowcharts to identify cleaning and extracting process
+    </p>
+    <h3>Week 3 (16th-20th)</h3>
+    <p style="max-width: 50%;">Using Thonny <br>
+        Import Pandas <br>
+      -  Open/Read CSV file in Python to begin cleaning <br>
+      -  Rename and .upper() all columns <br>
+      -  Remove Illegal Characters <br>
+        <b>Identified Problem;</b> Mega Pokemon share Pokedex number with their normal variants, these are duplicate rows
+        </p>
+    <h2>February</h2>
+    <h3>Week 4 (6th - 10th)</h3>
+    <p style="max-width: 50%;">Using Pandas;
+        Remove all duplicate rows in dataframe df.drop_duplicates(subset[“POKEDEX NUMBER”]) <br>
+        Convert Cleaned Dataframe to json / to a new CSV file “POKEMON_DATASET_cleaned” <br>
+        Send new CSV file as dictionary to Firebase
+        </p>
+    <h3>Week 5 (13th - 17th)</h3>
+    <p style="max-width: 50%;">
+        Import MatPlotLib
+Create new Python file to extract data from firebase for analytics <br>
+Create Function that uses the csv file as dictionary, to iterate through each row in the “STATS” Column, within the Pokedex Number Parameters, gathering the sum of total stats per generation, then get mean average total stats for each generation
+Create List of generations
+Using matplotlib graph the total average stats across all 6 generations in a Bar Chart with Labels and Title
+Store list of generations and average stats in a dictionary (average_dictionary) and send to firebase under name /AVERAGE_STATS/
+    </p>
+    <h3>Week 6 (20th - 24th)</h3>
+    <p style="max-width: 50%;">
+        - Use for loop to get a list [typelist] of all types in the csv file <br>
+        - Use for loop to iterate through csv file as dictionary counting frequency of each type in typelist throughout the entire file. <br>
+        - Create dictionary to store this data total_pure = {} <br>
+        - Set each unique type as a key & frequency as value  <br>
+        - Remove Key and accompanying value “PURE” as was added in cleaning <br>
+        - Create and add, previous dictionary, to a new dictionary total_nopure = {} <br>
+        - Using matplotlib graph total type frequency in CSV file with Labels & Title  <br>
+        Send Dictionary to firebase under name /Total_Types/
+        </p>
+    <h3>Week 7 (27th - 31st)</h3>
+    <p style="max-width: 50%;">
+        Define Function TypeGen(dictionary,generation)
+takes in csv file as dictionary and generation number for parameters similar to average_stats function, only counting type frequency like the Total_Types for loop
+Got type frequency and graph on pie chart each individual Generation
+Sent each graphed pie chart to Firebase under unique Titles;
+TypeGen1, TypeGen2 , … , TypeGen6 
+    </p>
+    <h2>March</h2>
+    <h3>Week 8 (3rd - 7th)</h3>
+    <h2>Created WireFrame Diagrams</h2>
+    <h3>Goal for how the websites will look</h3>
+    <h4>Index Website</h4>
+    <img src="wireframe index.png">
+    <h4>Survey Website</h4>
+    <img src="wireframe survey.png"> 
+    <p style="max-width: 50%;">    
+Created HTML file for Index WebPage in Visual Studio Code <br>
+Used javascript to create labels and values from each dictionary on Firebase and use these values and labels to graph the Data extracted from csv file. <br>
+using chart.js <br>
+Average_Stats => Bar Chart, Hover to see Generation Name and value
+Total_Types => Doughnut Chart, Hover to see Type Name and frequency. <br>
+Interactive Legend to change graphical data range
+TypeGen1,…,TypeGen6 => Doughnut Chart <br>
+- Same method as Total_Types Chart
+Added text to accompany each of these graphs so the user understands what the information they are being showed means, this information contains history on the Pokémon video games, what games each generation is within, and facts someone who may not know much about Pokémon can learn from <br>
+e.g. Generation 4 text tells the user about that Generations superior Competitive Pokémon for online battling 
+    </p>
+    <h3>Week 9 (10th - 14th)</h3>
+    <p style="max-width: 50%;">Added Suggestions/Recommendations Area for Users to interact more with the information system <br>
+        “What Generation do you want to know most common type in” <br>
+            - Created dropdown list, intuitive design for user interface, when a generation is entered value is retrieved from JavaScript code in Index.HTML and displayed to user. <br>
+        “Which Generation would you like to know average stats of” <br>
+            - Created dropdown list same to one from previous question <br>
+        Added text explaining these recommendations and suggestions
+    </p>
+    <h3>Week 10 (24th - 28th)</h3>
+    <p style="max-width: 50%;">
+        Created New HTML File for user survey. <br>
+Created a Boolean data type question <br>
+	- “Do you play Pokémon Games actively today” <br>
+Created a string data type question <br>
+	-“What is your ABSOLUTE favourite Pokémon type” <br>
+Created an integer data type question <br>
+	-“What is your favourite Pokémon generation” <br>
+Created two more String Data type questions, one to be used in graphing; <br>
+    -“What Pokémon games would you say you play mainly”
+    Added submit button: <br>
+	- Created and tested form validation before the user data is sent to firebase: <br>
+after submit => if form fails form validation => show alert telling user what the error is => don't sent data to firebase. <br>
+after submit => if form passes form validation => alert “user submission” => send data to firebase <br>
+All user Data sent to firebase under name Survey_Results
+    </p>
+    <img src="Test Table.png">
+    <h3>Week 11 (3rd - 7th)</h3>
+    <p style="max-width: 50%;">
+        Used javascript to create labels and values from Survey_Results dictionary <br>
+Created Lists to store user input Data for graphing <br> 
+Create function to iterate through Survey_Results and
+push User Input Data to assigned Lists <br>
+- YNList[inputid] (Boolean) <br>
+- FavTypeList[inputid] (String) <br> 
+- SelectGamesList[inputid] (String) <br> 
+- SelectGenList[inputid] (Integer) <br> 
+- FavPokemonList[inputid] (String)<br>
+Created for loop to iterate through list of user inputs to extract data for graphing (values)
+Each unique user input is initially saved as a label e.g. <br>
+- SelectGamesList (User input = Original Pokemon Series), User input is saved as a label and graphed with its frequency among users <br>
+created functions to use these labels and values to make graphs using Chart.js and display them on Survey Website
+</p>    
+<h3>Week 12(10th-14th)</h3>
+    <p style="max-width: 50%;">
+        Used OBS to record a thorough rundown of how I identified a dataset to analyse,
+how I cleaned the dataset using python and built in python libraries 
+created a new csv file and sent the cleaned data to firebase 
+Extracted data from cleaned dictionary on firebase and created interactive displays of information.
+    </p>
+<h1>Evaluation</h1>
+<h3>How I met the Requirements</h3>
+- Basic <br>
+I Collected data (downloaded publicly available dataset), used python to clean and extract the data into a suitable format (Dictionaries), stored this data on Firebase. <br>
+I used Python to carry out analytics on my dataset (Extracted necessary Data from cleaned Dataset for graphing),  created lists and dictionaries to manage this data, used matplotlib to create multiple basic visualisations of different key aspects of the dataset (Created Bar Chart for Average Stats, Pie Chart for Total Pokemon Type frequency & frequency of Pokemon Types in each Generation), each of these visualisations are labelled with titles, axis, and a legend. <br>
+Created an interactive information system interface using HTML and JavaScript that provides the public (User) with information about my Dataset and displayed the identified visualisations within the information system <br>
+- Advanced <br>
+I made the data visualisations interactive so that users can interact with the information system, the legend of the frequency graphs allow the user to change the range of types the chart is showing, the user can hover to see details on all of my graphs and have strong colours to increase readability and user interface quality. <br>
+I Created a form or poll (Survey) relating to my dataset in which I collected 3 different data types (Boolean, Integer, String) from the user, validated the user inputs and stored this data in a database (Firebase). I then displayed this collected data through the information system. <br>
+I created a recommendations (suggestions area) on my Index website to help the user make inform decisions (Decide what types they should use / What generation they should use) <br>
+<h3>How I would improve upon the artefact in the future</h3>
+<p style="max-width: 50%;">
+    I would like to add more information from my dataset to the information system, like a bar chart displaying what Types have the highest Average Stats in each generation, I imagine this would be useful to the user as it would inform them on which types would have a competitive advantage against others in a given generation
+</p>
+<h1>References</h1>
+<p style="max-width: 75%;">
+    - Websites used in Researching Datasets and Interactive Information Systems <br>
+    - <a href="https://www.kaggle.com/datasets/abcsds/pokemon">kaggle.com/pokemon</a> <br>
+    - <a href="https://www.kaggle.com/datasets">kaggle.com</a> <br>
+    - <a href="https://data.gov.ie/dataset?theme=Housing">gov.ie/Housing</a> <br>
+    - <a href="-https://data.gov.ie/showcase">data.gov/showcase</a> <br>
+    - <a href="https://storymaps.arcgis.com/stories/87cc342bff20462bb896087b0ce16215">storymaps.arcgis.com</a> <br>
+    - <a href="https://public.tableau.com/app/profile/arup.ireland/viz/CommutingInIreland2006-2016/CommutinginIreland">public.tableau.com</a>
+</p>
+<h1>Summary Word Count</h1>
+<img src="Word Count Table.png">
+<p>Total Word Count = 2126</p>
+    
+
+
+
+
+
+</body>
+</html>
