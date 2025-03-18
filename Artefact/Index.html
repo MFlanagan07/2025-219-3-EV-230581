@@ -1,0 +1,490 @@
+<html>
+    <title>PokeType</title>
+    <h1><b>PokeType</b></h1>
+
+
+    <!-- Information system introduction / uses  -->
+
+    <p>My project is an interactive information system on Pokemon <br>
+      Pokemon is a game made by Nintendo, its primary mechanic involves capturing creatures<br> called “Pokemon” 
+      and adding them to your party of 6 to face other players / NPC’s in battles<br> 
+      against their parties.This interactive information system displays and visualises stats <br>
+      that can be used to competitive / casual play advantage. It analyses data on the first <br>
+      6 generations of Pokemon and with this data displays charts that with information on how the <br> 
+      Video Game Pokemon has changed over the years. By using this dataset that contained information on <br>
+       all of the in-game stat’s Pokemon I made a comprehensive Bar Chart visualising the clear Competitive <br>
+        Advantage certain generations may have against others in Online Pokemon Battling. <br>
+        Alongside this a Doughnut Chart that displays the frequency of  pokemon types. <br>
+        There are Doughnut Charts for across all generations, and per each generation. </p>
+
+    
+        <!-- Chart JS -->
+
+    <head><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script></head>
+
+
+    <!-- Background Image -->
+
+    <body style="background: url('https://preview.redd.it/oexlfzwy78ex.png?auto=webp&s=2a3ed03fb4fd9e9699f0830e6bc0efff25bdb2e6');">
+
+
+<!-- Bar Chart information -->
+
+    <h1>Average Stats per Pokémon in Each Generation</h1>
+    <canvas id="Average" style="width:100%;max-width:850px"></canvas>
+    <p>This Bar Chart displays the average stat between all Pokémon <br>
+      in each generation. There is an online competitive Pokemon <br>
+      Battling Community that often do events where specific <br>
+       Genration ranges are given for tournaments.
+      This Bar Chart <br>
+      makes it easy to discern what generations have superior stats on <br>
+      average, Generation 4 having a considerably higher average stat <br> 
+      per Pokemon Solidifies it as a solid Generation in Professional <br>
+      Pokemon Battling.
+    </p>
+ 
+
+
+    <!-- total type frequency information -->
+
+    <h1>Frequency of All Pokemon types Across First 6 Generations</h1>
+    <canvas id="Total" style="width:100%;max-width:850px"></canvas>
+    <p>Each Pokemon has a specific type, depending on what type a pokemon is it allows specific moves to learnt by the<br>
+       Pokemon Type Matchups are essential in Pokemon games as every type can do <b>"Super Effective"</b>damage to<br>
+      other types, and can also have type weaknesses. <br>
+      For example : Fire types are <b>Super Effective</b>against Grass Types (because fire burns grass) <br>
+      but have a type-weakness to Water Types (because water extinguishes fire)
+    </p>
+
+
+    <!-- Gen 1 - 6 Frequency information -->
+
+    <h2>Pokemon Type Frequency Generation 1</h2>
+    <canvas id="Gen1" style="width:100%;max-width:850px"></canvas>
+    <p> Generation 1 (1996) <br>
+      Generation 1, being the first Generation of Pokemon, <br>
+      has the least amount of types in it, more types are added <br>
+      later on in the series to allow for balancing. A large portion of the <br>
+      foundational Pokemon which will continue to appear in future games <br>
+      moving forward are added in Generation 1 <br> 
+      Games that were released with Generation 1 are: <br>
+      Pokemon Red, Pokemon Blue, Pokemon Green, Pokemon Yellow <br> </p>
+
+
+    <h2>Pokemon Type Frequency Generation 2</h2>
+    <canvas id="Gen2" style="width:100%;max-width:850px"></canvas>
+    <p> Generation 2 (released: 1999) <br>
+      A main issue in Generation 1 was the unchecked advantage Psychic type Pokemon had over most other types in the <br>
+      game at the time. The Legendary Pokemon Mewtwo in specific was too over-powered, to combat this two new <br>
+      pokemon types were added Dark and Steel types. Dark being super effective against Psychic and Ghost types <br>
+      brought balance back into the game and allowed for new pokemon of both types to be added <br>
+      in the future Games that were released with Generation 2 are: <br>
+      Pokemon Gold, Pokemon Silver, Pokemon Crytsal
+    </p>
+
+
+    <h2>Pokemon Type Frequency Generation 3</h2>
+    <canvas id="Gen3" style="width:100%;max-width:850px"></canvas>
+    <p>Generation 3 (released: 2002)<br>
+      Games that were released with Generation 3 are: <br>
+      Pokemon Ruby, Pokemon Sapphire, Pokemon Emerald
+    </p>
+
+    
+    <h2>Pokemon Type Frequency Generation 4</h2>
+    <canvas id="Gen4" style="width:100%;max-width:850px"></canvas>
+    <p>Generation 4 (released: 2006) <br>
+      Generation 4, widely accepted to be the best Generation for sheer <br>
+      competitive capabilities has a more even spread of types for <br>
+      Pokemon Games that were released with Generation 4 are:<br>
+      Pokemon Diamond, Pokemon Pearl, Pokemon Platinum</p>
+
+
+    <h2>Pokemon Type Frequency Generation 5</h2>
+    <canvas id="Gen5" style="width:100%;max-width:850px"></canvas>
+    <p>Generation 5 (released: 2010)
+      Games that were released with Generation 5 are:<br>
+      Pokemon White, Pokemon White 2, Pokemon Black, Pokemon Black 2
+    </p>
+
+
+    <h2>Pokemon Type Frequency Generation 6</h2>
+    <canvas id="Gen6" style="width:100%;max-width:850px"></canvas>
+    <p>Generation 6 (released: 2013)<br>
+      Games that were released with Generation 6 are:<br>
+      Pokemon X and Pokemon Y</p>
+
+      <!-- Suggestions based on data analysed -->
+
+    <h1>Pokémon data analysis</h1>
+    <p>What Generation do you want to know the most common type in;</p>
+  <form id="suggestiongen"> 
+    <input type="search" id="suggestiongeneration"list="Genlist" placeholder="Generation 1">
+    <p id="result"></p>
+    <p>This is useful for determining what Pokemon you would want in your <br>Party in order to have an advantage against other Pokemon Types<br>
+       in the Generation</p>
+    <br>
+    <p>Which Generation would you like to know average stats of;</p>
+    <input type="search" id="suggestiongeneration2"list="Genlist" placeholder="Generation 4"> 
+    <p id="result2"></p>
+    <p>This can be used to determing what Generation you would want to specialise in <br> when playing online Pokemon Battling tournaments</p>
+    <datalist id="Genlist">
+      <option value="Generation 1">Generation 1</option>
+      <option value="Generation 2">Generation 2</option>
+      <option value="Generation 3">Generation 3</option>
+      <option value="Generation 4">Generation 4</option>
+      <option value="Generation 5">Generation 5</option>
+      <option value="Generation 6">Generation 6</option>  
+    </datalist>
+  
+    <input type="submit" id="submit">
+  </form>
+  
+
+  <!-- Beginning of Script & grabbing firebase -->
+   
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+ 
+    import { getDatabase, ref, set, get, update, child, query,orderByChild } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+    const firebaseConfig = {
+    apiKey: "AIzaSyBgE42rFjo1U74heENRJfiysiKBhwG3Mho",
+    authDomain: "lc-2025-computer-science.firebaseapp.com",
+    databaseURL: "https://lc-2025-computer-science-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "lc-2025-computer-science",
+    storageBucket: "lc-2025-computer-science.firebasestorage.app",
+    messagingSenderId: "16086328264",
+    appId: "1:16086328264:web:359f92777594482dbdd6fd",
+    measurementId: "G-H5HHK5GDX3" 
+};
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase();
+
+    const firebaseRef = ref(database) 
+
+  // getting labels and values to be put into dictionaries for graphing Chart.JS
+
+    let AverageStatsLabels = null
+    let AverageStatsValues = null
+    get(child(firebaseRef,'/AVERAGE_STATS/')).then((snapshot)=>{    //Average stats in all generations
+      if (snapshot.exists()) {
+        // console.log(snapshot.val);
+        AverageStatsLabels = Object.keys(snapshot.val());
+        // console.log(AverageStatsLabels)
+        AverageStatsValues = Object.values(snapshot.val());
+        //let ChartIDstoValues[snapshot.key] = AverageStatsValues;
+        let nchart = graphmaker2(AverageStatsLabels,AverageStatsValues)
+      }
+    })
+
+
+    let TotalTypesLabels = null
+    let TotalTypesValues = null
+    let TotalTypesValuesString = null
+    get(child(firebaseRef,'/Total_Types/')).then((snapshot)=>{
+     
+      if (snapshot.exists()) {
+        TotalTypesLabels = Object.keys(snapshot.val())
+        TotalTypesValuesString = Object.values(snapshot.val());
+        TotalTypesValues = []
+        for (let i = 0; i<TotalTypesValuesString.length; i++){
+          TotalTypesValues.push(Number(TotalTypesValuesString[i]))
+        }
+        // let ChartIDstoValues[snapshot.key] = AverageStatsValues;
+        let nchart = graphmaker(TotalTypesLabels,TotalTypesValuesString)
+
+        
+      }
+    })
+
+
+    let Gen1Labels = null
+    let Gen1ValuesString = null
+    let Gen1Values = null
+    get(child(firebaseRef,"/TypeGen1/")).then((snapshot)=>{
+      if (snapshot.exists()) {
+        Gen1Labels = Object.keys(snapshot.val())
+        Gen1ValuesString = Object.values(snapshot.val());
+        Gen1Values = []
+        for (let i = 0; i<Gen1ValuesString.length; i++){
+          Gen1Values.push(Number(Gen1ValuesString[i]))
+        }
+      }
+      //console.log(Gen1Labels,Gen1ValuesString)
+      let nchart = graphmaker3(Gen1Labels,Gen1ValuesString) // Gen 1 type frequency
+     
+    })
+
+
+    let Gen2Labels = null
+    let Gen2ValuesString = null
+    let Gen2Values = null
+    get(child(firebaseRef,"/TypeGen2/")).then((snapshot)=>{
+
+      if (snapshot.exists()) {
+        Gen2Labels = Object.keys(snapshot.val())
+        Gen2ValuesString = Object.values(snapshot.val());
+        Gen2Values = []
+        for (let i = 0; i<Gen2ValuesString.length; i++){
+          Gen2Values.push(Number(Gen2ValuesString[i]))
+        }
+      }
+      let nChart = graphmaker4(Gen2Labels,Gen2ValuesString) // Gen 2 type frequency
+    })
+
+
+    let Gen3Labels = null
+    let Gen3ValuesString = null
+    let Gen3Values = null
+    get(child(firebaseRef,"/TypeGen3/")).then((snapshot)=>{
+
+      if (snapshot.exists()) {
+        Gen3Labels = Object.keys(snapshot.val())
+        Gen3ValuesString = Object.values(snapshot.val());
+        Gen3Values = []
+        for (let i = 0; i<Gen3ValuesString.length; i++){
+          Gen3Values.push(Number(Gen3ValuesString[i])) // Gen 3 type frequency
+        }
+      }
+      let nChart = graphmaker5(Gen3Labels,Gen3ValuesString)
+    })
+
+
+    let Gen4Labels = null
+    let Gen4ValuesString = null
+    let Gen4Values = null
+    get(child(firebaseRef,"/TypeGen4/")).then((snapshot)=>{
+
+      if (snapshot.exists()) {
+        Gen4Labels = Object.keys(snapshot.val())
+        Gen4ValuesString = Object.values(snapshot.val());
+        Gen4Values = []
+        for (let i = 0; i<Gen4ValuesString.length; i++){
+          Gen4Values.push(Number(Gen4ValuesString[i]))  // Gen 4 type frequency
+        }
+        }
+        let nChart = graphmaker6(Gen4Labels,Gen4ValuesString)
+      })
+
+
+      let Gen5Labels = null
+      let Gen5ValuesString = null
+      let Gen5Values = null
+    get(child(firebaseRef,"/TypeGen5/")).then((snapshot)=>{
+
+      if (snapshot.exists()) {
+        Gen5Labels = Object.keys(snapshot.val())
+        Gen5ValuesString = Object.values(snapshot.val());
+        Gen5Values = []
+        for (let i = 0; i<Gen5ValuesString.length; i++){
+          Gen5Values.push(Number(Gen5ValuesString[i]))   // Gen 5 type frequency
+        }
+      }
+      let nChart = graphmaker7(Gen5Labels,Gen5ValuesString)
+    })
+
+
+    let Gen6Labels = null
+    let Gen6ValuesString = null
+    let Gen6Values = null
+    get(child(firebaseRef,"/TypeGen6/")).then((snapshot)=>{
+
+      if (snapshot.exists()) {
+        Gen6Labels = Object.keys(snapshot.val())
+        Gen6ValuesString = Object.values(snapshot.val());
+        Gen6Values = []
+        for (let i = 0; i<Gen6ValuesString.length; i++){
+          Gen6Values.push(Number(Gen6ValuesString[i])) // Gen 6 type frequency
+        }
+      }
+      let nChart = graphmaker8(Gen6Labels,Gen6ValuesString)
+    })
+
+    // Functions to graph Values called from firebase
+
+function graphmaker(xlabels, ylabels) {
+new Chart(document.getElementById("Total"), {
+          type: "doughnut",
+          data: {
+              labels: xlabels,
+              datasets: [{data: ylabels,
+              backgroundColor: ['rgb(174, 255, 40)','rgb(143, 143, 143)','rgb(187, 5, 187)','rgb(235, 255, 0)','rgb(252, 130, 140)','rgb(255, 87, 0)','rgb(255,0,0)','#D3D3FF','rgb(204, 120, 204)','rgb(3,172,3)','rgb(255, 175, 5)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(121, 148, 156)','rgb(97, 97, 231)']}]
+}
+});
+}
+
+function graphmaker2(xlabels, ylabels){
+new Chart(document.getElementById("Average"), {
+  type: "bar",
+  data: {
+    labels: xlabels,
+    datasets: [{data: ylabels, 
+      backgroundColor: ['rgb(193,192,213)','rgb(173,172,199)','rgb(152,151,184)','rgb(132,130,170)','rgb(112,109,156)','rgb(91,88,142)']}]
+
+    
+  },
+  options: {
+    legend:{
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks:{
+          beginAtZero: false
+        } 
+      }]
+    }
+  }
+});
+}
+function graphmaker3(xlabels,ylabels) {
+  new Chart(document.getElementById("Gen1"), {
+    type: "doughnut",
+    data: {
+      labels: xlabels,
+      datasets: [{data: ylabels,
+      backgroundColor: ['rgb(174, 255, 40)','rgb(187, 5, 187)','rgb(235, 255, 0)','rgb(252, 130, 140)','rgb(255, 87, 0)','rgb(255,0,0)','rgb(204, 120, 204)','rgb(3,172,3)','rgb(255, 175, 5)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(97, 97, 231)']}]
+    }
+  })
+}
+
+function graphmaker4(xlabels,ylabels) {
+  new Chart(document.getElementById("Gen2"),{
+    type: "doughnut",
+    data: {
+      labels: xlabels,
+      datasets: [{data: ylabels,
+      backgroundColor: ['rgb(174, 255, 40)','rgb(143, 143, 143)','rgb(235, 255, 0)','rgb(252, 130, 140)','rgb(255, 87, 0)','rgb(255,0,0)','rgb(204, 120, 204)','rgb(3,172,3)','rgb(255, 175, 5)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(121, 148, 156)','rgb(97, 97, 231)']}]
+    }
+  })
+}
+
+function graphmaker5(xlabels,ylabels) {
+  new Chart(document.getElementById("Gen3"),{
+    type: "doughnut",
+    data: {
+      labels: xlabels,
+      datasets: [{data: ylabels,
+      backgroundColor: ['rgb(174, 255, 40)','rgb(143, 143, 143)','rgb(187, 5, 187)','rgb(235, 255, 0)','rgb(255, 87, 0)','rgb(255,0,0)','rgb(204, 120, 204)','rgb(3,172,3)','rgb(255, 175, 5)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(121, 148, 156)','rgb(97, 97, 231)']}]
+    }
+  })
+}
+
+function graphmaker6(xlabels,ylabels) {
+  new Chart(document.getElementById("Gen4"),{
+    type: "doughnut",
+    data: {
+      labels: xlabels,
+      datasets: [{data: ylabels,
+      backgroundColor:['rgb(174, 255, 40)','rgb(143, 143, 143)','rgb(187, 5, 187)','rgb(235, 255, 0)','rgb(252, 130, 140)','rgb(255, 87, 0)','rgb(255,0,0)','rgb(204, 120, 204)','rgb(3,172,3)','rgb(255, 175, 5)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(121, 148, 156)','rgb(97, 97, 231)']}]
+    }
+  })
+}
+
+function graphmaker7(xlabels,ylabels) {
+  new Chart(document.getElementById("Gen5"),{
+    type: "doughnut",
+    data: {
+      labels: xlabels,
+      datasets: [{data: ylabels,
+      backgroundColor: ['rgb(174, 255, 40)','rgb(143, 143, 143)','rgb(187, 5, 187)','rgb(235, 255, 0)','rgb(255, 87, 0)','rgb(255,0,0)','#D3D3FF','rgb(204, 120, 204)','rgb(3,172,3)','rgb(255, 175, 5)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(121, 148, 156)','rgb(97, 97, 231)']}]
+    }
+  })
+}
+
+function graphmaker8(xlabels,ylabels) {
+  new Chart(document.getElementById("Gen6"),{
+    type: "doughnut",
+    data: {
+      labels: xlabels,
+      datasets: [{data: ylabels,
+      backgroundColor:['rgb(174, 255, 40)','rgb(143, 143, 143)','rgb(187, 5, 187)','rgb(235, 255, 0)','rgb(252, 130, 140)','rgb(255, 87, 0)','rgb(255,0,0)','#D3D3FF','rgb(204, 120, 204)','rgb(3,172,3)','rgb(198,227,230)','rgb(215, 215, 215)','rgb(234, 127, 236)','rgb(201, 96, 131)','rgb(227, 203, 145)','rgb(121, 148, 156)','rgb(97, 97, 231)']}]
+    }
+  })
+}
+
+
+// Script to take user input and give suggestion based on data
+
+let submitButton = document.getElementById("submit")
+submitButton.addEventListener("click", function(event){
+  event.preventDefault();
+  let suggestinput2 = document.getElementById("suggestiongeneration2")
+  let resultElement2 = document.getElementById("result2")
+
+
+  let suggestinputval = suggestinput2.value
+  let suggestinputvalcaps = suggestinputval.replace(/[a-z]/g, char=>char.toUpperCase())
+  if(suggestinputvalcaps === "GENERATION 1"){
+    let val = AverageStatsValues[0]
+    resultElement2.innerText = `The Average Stats of a Pokemon in Generation 1 is ${val}`
+  }
+  if(suggestinputvalcaps === "GENERATION 2"){
+    let val = AverageStatsValues[1]
+    resultElement2.innerText = `The Average Stats of a Pokemon in Generation 2 is ${val}`
+  }
+  if(suggestinputvalcaps === "GENERATION 3"){
+    let val = AverageStatsValues[2]
+    resultElement2.innerText = `The Average Stats of a Pokemon in Generation 3 is ${val}`
+  }
+  if(suggestinputvalcaps === "GENERATION 4"){
+    let val = AverageStatsValues[3]
+    resultElement2.innerText = `The Average Stats of a Pokemon in Generation 4 is ${val}`
+  }
+  if(suggestinputvalcaps === "GENERATION 5"){
+    let val = AverageStatsValues[4]
+    resultElement2.innerText = `The Average Stats of a Pokemon in Generation 5 is ${val}`
+  }
+  if(suggestinputvalcaps === "GENERATION 6"){
+    let val = AverageStatsValues[5]
+    resultElement2.innerText = `The Average Stats of a Pokemon in Generation 6 is ${val}`
+  }
+  
+
+
+  let suggestinput = document.getElementById("suggestiongeneration")
+  let resultElement = document.getElementById("result")
+  if(suggestinput.value === "Generation 1"){
+    let maxval = Math.max(...Gen1Values);
+    let indexOfmax = Gen1Values.indexOf(maxval);
+    let Label_of_index_of_max = Gen1Labels[indexOfmax];
+    resultElement.innerText = `The most common type in Generation 1 is ${Label_of_index_of_max}`
+  } 
+  if(suggestinput.value === "Generation 2"){
+    let maxval = Math.max(...Gen2Values);
+    let indexOfmax = Gen2Values.indexOf(maxval);
+    let Label_of_index_of_max = Gen2Labels[indexOfmax];
+    resultElement.innerText = `The most common type in Generation 2 is ${Label_of_index_of_max}`
+  }
+  if(suggestinput.value === "Generation 3"){
+    let maxval = Math.max(...Gen3Values);
+    let indexOfmax = Gen3Values.indexOf(maxval);
+    let Label_of_index_of_max = Gen3Labels[indexOfmax];
+    resultElement.innerText = `The most common type in Generation 3 is ${Label_of_index_of_max}`
+  } 
+  if(suggestinput.value === "Generation 4"){
+    let maxval = Math.max(...Gen4Values);
+    let indexOfmax = Gen4Values.indexOf(maxval);
+    let Label_of_index_of_max = Gen4Labels[indexOfmax];
+    resultElement.innerText = `The most common type in Generation 4 is ${Label_of_index_of_max}`
+  }
+  if(suggestinput.value === "Generation 5"){
+    let maxval = Math.max(...Gen5Values);
+    let indexOfmax = Gen5Values.indexOf(maxval);
+    let Label_of_index_of_max = Gen5Labels[indexOfmax];
+    resultElement.innerText = `The most common type in Generation 5 is ${Label_of_index_of_max}`
+  }
+  if(suggestinput.value === "Generation 6"){
+    let maxval = Math.max(...Gen6Values);
+    let indexOfmax = Gen6Values.indexOf(maxval);
+    let Label_of_index_of_max = Gen6Labels[indexOfmax];
+    resultElement.innerText = `The most common type in Generation 6 is ${Label_of_index_of_max}`
+  }
+})
+
+</script>
+
+</body>
+
+</html>

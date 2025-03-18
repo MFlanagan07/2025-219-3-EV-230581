@@ -1,0 +1,347 @@
+<html>
+<title>PokeType2</title>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+
+
+<body>
+    <style>
+        body {
+            background-image: url('https://external-preview.redd.it/8BhMD2fR0QfFdwb2ZigRmnL08-m1By8yEnWDJUg4aVM.png?auto=webp&s=0b1f218e35b908c9657764b1b0cca170959d2d15');
+        }
+    </style>
+</body>
+<h1>Pokémon Type shi-</h1>
+<h2>Answer these following questions to be a part of an analysis on Pokémon</h2>
+
+
+        <!-- Boolean type Question, does the user play Pokemon -->
+<p1>Do you play Pokémon Games actively today?</p1>
+<div>
+    <label for="yes">Yes</label>
+    <input type="checkbox" id="yes" value="Yes">    
+</div>
+
+
+        <!-- String type Question, users favourite pokemon type  -->
+
+<p2>Please enter your <b>ABSOLUTE </b>favourite Pokémon type</p2>
+
+<div class="button-container" id="type-container">
+    <input type="search" id="favouritetype" list="TypeList">
+
+    
+    <!-- list of all pokemon types -->
+    
+    <datalist id="TypeList">  
+        <option value="Bug">Bug</option>
+        <option value="Dark">Dark</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Electric">Electric</option>
+        <option value="Fairy">Fairy</option>
+        <option value="Fire">Fire</option>
+        <option value="Fighting">Fighting</option>
+        <option value="Flying">Flying</option>
+        <option value="Ghost">Ghost</option>
+        <option value="Grass">Grass</option>
+        <option value="Ground">Ground</option>
+        <option value="Ice">Ice</option>
+        <option value="Normal">Normal</option>
+        <option value="Poison">Poison</option>
+        <option value="Psychic">Psychic</option>
+        <option value="Rock">Rock</option>
+        <option value="Steel">Steel</option>
+        <option value="Water">Water</option>
+    </datalist>
+
+</div>
+
+
+        <!-- Users favourite Pokemon Generation (1-6) -->
+
+<p>What is your favourite Pokémon generation?</p>
+<div class="button-container" id="generation-container">
+    <input type="radio" name="radiogen" id="Radiogen1" value="Generation 1">Generation 1</input>
+    <input type="radio" name="radiogen" id="Radiogen2" value="Generation 2">Generation 2</input>
+    <input type="radio" name="radiogen" id="Radiogen3" value="Generation 3">Generation 3</input>
+    <input type="radio" name="radiogen" id="Radiogen4" value="Generation 4">Generation 4</input>
+    <input type="radio" name="radiogen" id="Radiogen5" value="Generation 5">Generation 5</input>
+    <input type="radio" name="radiogen" id="Radiogen6" value="Generation 6">Generation 6</input>
+</div>
+
+
+        <!-- Inclusive list of pokemon games -->
+
+<div class="button-container" id="game-container">
+    <p>What Pokémon games would you say you play mainly (Select Any 2)</p>
+    <form>
+        <input type="search" id="FavPokemonGame1" list="pokemongames" placeholder="Enter Game">
+
+        <datalist id="pokemongames">
+            <option value="Original Pokemon Series">Gameboy/DS Pokémon</option>
+            <option value="Modern Pokemon Series">Switch Pokémon</option>
+            <option value="Pokemon Go">Pokémon Go</option>
+            <option value="Pokemon Trading Card Game">Pokémon TCG</option>
+            <option value="NA">Don't play</option>
+        </datalist>
+    </form>
+
+
+        <!-- text input question -->
+
+    <p>Name 3 of your favourite Pokémon</p>
+    <div class="button-container" id="game-container">
+        <input type="text" id="FavPokemon1" placeholder="Scizor">
+        <br>
+        <input type="text" id="FavPokemon2" placeholder="Tyranitar">
+        <br>
+        <input type="text" id="FavPokemon3" placeholder="Salamence">
+        <button type="button" id='pokemonbutton'>Submit</button>
+    </div>
+</div>
+
+
+<!-- Creating Canvas that the user submitted graphs will be  -->
+<h2>Chart Displaying which types are most favourable among users:</h2>
+<canvas id="Types" style="width:100%;max-width:1000px"></canvas> 
+<h2>Chart Displaying what generation is the most popular:</h2>
+<canvas id="Generations" style="width:100%;max-width:1000px;"></canvas>
+<h2>Chart Displaying which Pokemon games are popular today:</h2>
+<canvas id="Games" style="width:100%;max-width:1000px;"></canvas>
+
+
+    <!-- beginning of script -->
+
+<script type="module">
+
+
+    // grabbing data from firebase 
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"
+
+    import { getDatabase, ref, set, get, update, child, query, orderByChild, push } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyBgE42rFjo1U74heENRJfiysiKBhwG3Mho",
+        authDomain: "lc-2025-computer-science.firebaseapp.com",
+        databaseURL: "https://lc-2025-computer-science-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "lc-2025-computer-science",
+        storageBucket: "lc-2025-computer-science.firebasestorage.app",
+        messagingSenderId: "16086328264",
+        appId: "1:16086328264:web:359f92777594482dbdd6fd",
+        measurementId: "G-H5HHK5GDX3"
+    }
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase();
+
+    const firebaseRef = ref(database) 
+
+    // defining variables to be used in functions
+
+    let selectgames1 = null
+    let submitall = false
+    let ynpokemon = null
+    let favetype = null
+    let userSomething = document.getElementById('pokemonbutton')
+    let selectedpokemon1 = document.getElementById("FavPokemon1")
+    let selectedpokemon2 = document.getElementById("FavPokemon2")
+    let selectedpokemon3 = document.getElementById("FavPokemon3")
+    userSomething.addEventListener('click', submitALL)
+
+    
+    // submit button function to send all data at same time
+
+    function submitALL() {
+        alert('user submission')
+        let selectedgen = document.querySelector('input[name=radiogen]:checked').value; 
+        selectgames1 = document.getElementById("FavPokemonGame1").value  // selected games
+        ynpokemon = document.getElementById("yes").value  // checkbox first question
+        favetype = document.getElementById("favouritetype").value
+        console.log(selectedgen) // selected generation
+        console.log(selectedpokemon1.value, selectedpokemon2.value, selectedpokemon3.value) // selected pokemon
+        console.log(favetype)  // selected type
+
+
+
+    // creating list of games for form validation
+
+        const validGames = ["Original Pokemon Series","Modern Pokemon Series","Pokemon Go","Pokemon Trading Card Game","NA"]
+        
+        // checks if user input is valid
+
+        if (!validGames.includes(selectgames1)) {
+            alert("Invalid Game, Please enter a valid Pokemon Game from the list")
+            return;
+        }
+
+
+    // creating list of types for form validation
+
+        const RealPokemonTypes = ["Bug","Dark","Dragon","Electric","Fairy","Fire","Fighting","Flying","Ghost","Grass","Ground","Ice","Normal","Water","Poison","Psychic","Steel","Water"]
+
+        // checks if user input is valid
+
+        if (!RealPokemonTypes.includes(favetype)) {
+            alert("Invalid Type, Please enter a valid Pokemon Type from the list")
+            return;
+        }
+
+
+    // pushing results for inputs to firebase under accompanying header
+
+        push(child(firebaseRef, '/Survey_Results/'), ({'YNPokemon': ynpokemon,
+                                                    'FavType': favetype,
+                                                    'SelectGames': [selectgames1],
+                                                    'SelectGen': selectedgen,
+                                                    'FavPokemon': [selectedpokemon1.value,selectedpokemon2.value,selectedpokemon3.value]}))    
+
+    }
+
+
+    // defining variables and dictionaries for graphing
+
+    let SurveyResultsLabels = null
+    let type_frequency = {}
+    let generation_frequency = {}
+    let game_frequency = {}
+    let play_frequency = {}
+
+
+    // pulling survey results down from Firebase
+
+    get(child(firebaseRef,'/Survey_Results/')).then((snapshot)=>{
+        if (snapshot.exists()) {
+
+            // creating lists that will
+
+            var YNList = []
+            var FavTypeList = []
+            var SelectGamesList = []
+            var SelectGenList = []
+            var FavPokemonList = []
+
+            // creating labels for each input type so they can be sorted
+            SurveyResultsLabels = Object.keys(snapshot.val())
+            SurveyResultsLabels.forEach(function(item){
+                YNList.push(snapshot.val()[item]['YNPokemon'])
+                FavTypeList.push(snapshot.val()[item]['FavType'])
+                SelectGamesList.push(snapshot.val()[item]['SelectGames'])
+                SelectGenList.push(snapshot.val()[item]['SelectGen'])
+                FavPokemonList.push(snapshot.val()[item]['FavPokemon'])
+            })
+            
+            // gets the keys and values for graphing the user input as dictionary 
+
+            for (let i = 0; i<FavTypeList.length; i++){
+                let type = FavTypeList[i]
+                if (type_frequency[type]){
+                    type_frequency[type] += 1
+                } else {
+                    type_frequency[type] = 1
+                }
+                
+            }
+            for (let i = 0; i<SelectGenList.length; i++){
+                let gen = SelectGenList[i]
+                if (generation_frequency[gen]){
+                    generation_frequency[gen] += 1
+                } else {
+                    generation_frequency[gen] = 1
+                }
+            }
+            for (let i =0; i<SelectGamesList.length; i++){
+                let game = SelectGamesList[i]
+                if (game_frequency[game]){
+                    game_frequency[game] += 1
+                } else {
+                    game_frequency[game] = 1
+                }
+            }
+            for (let i =0; i<YNList.length; i++){
+                let answer = YNList[i]
+                if (play_frequency[answer]){
+                    play_frequency[answer] += 1
+                } else {
+                    play_frequency[answer] = 1
+                }
+            }
+        }
+
+
+// creating charts with chartjs using the keys and values of user dictionaries
+
+let typechart = graphmaker(Object.keys(type_frequency),Object.values(type_frequency))
+let genchart = graphmaker2(Object.keys(generation_frequency),Object.values(generation_frequency))
+let gamechart = graphmaker3(Object.keys(game_frequency),Object.values(game_frequency))
+})
+
+// creating labels to be used in graphing
+
+let typelabels = ['Bug','Dark','Dragon','Electric','Fairy','Fighting','Flying','Ghost','Grass','Ground','Ice','Normal','Poison','Psychic','Rock','Steel','Water']
+let genlabels = ['Generation 1','Generation 2','Generation 3','Generation 4','Generation 5','Generation 6']
+
+
+
+// creating function to create doughnut chart for all 18 pokemon types to be added
+
+function graphmaker(xlabels, ylabels) {
+new Chart(document.getElementById("Types"), {
+          type: "doughnut",
+          data: {
+              labels: xlabels,
+              datasets: [{data: ylabels,
+            backgroundColor: [
+            '#8f7070','#9f6060','#af5050','#bf4040','#cf3030',
+            '#df2020','#ef1010','#ff0000','#ef1010','#df2020',
+            '#cf3030','#bf4040','#af5050','#9f6060','#8f7070',
+            '#9f6060','#af5050','#bf4040'
+        ]}]
+}
+});
+}
+
+
+// creating function to create Bar Chart for which of 6 Generations were selected
+
+function graphmaker2(xlabels, ylabels){
+new Chart(document.getElementById("Generations"), {
+  type: "bar",
+  data: {
+    labels: xlabels,
+    datasets: [{data: ylabels, 
+      backgroundColor: ['rgb(193,192,213)','rgb(173,172,199)','rgb(152,151,184)','rgb(132,130,170)','rgb(112,109,156)','rgb(91,88,142)']}]
+
+    
+  },
+  options: {
+    legend:{
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks:{
+          beginAtZero: true   // 
+        } 
+      }]
+    }
+  }
+});
+}
+
+
+// creating pie chart that shows what games are most played
+
+function graphmaker3(xlabels, ylabels) {
+new Chart(document.getElementById("Games"), {
+          type: "pie",
+          data: {
+              labels: xlabels,
+              datasets: [{data: ylabels,
+            backgroundColor: ['#92b3e8','#5085d9','#0a66f7','#a832e3','#ce7cf7','#d493f5']}]
+}
+});
+}
+</script>
+</html>
